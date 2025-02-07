@@ -1,0 +1,25 @@
+<services>
+    <service name="obs_scm">
+        <param name="url">https://github.com/huakim/luajinja</param>
+        <param name="scm">git</param>
+        <param name="revision">scm-1</param>
+        <param name="without-version">enable</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">(.*)</param>
+    </service>
+    <service name="lua2pack_generate" mode="buildtime">
+        <param name="rockspec">glob://./luajinja/luajinja-scm-1.rockspec</param>
+        <param name="rockspec">obsinfo://glob://./luajinja.obsinfo</param>
+        <param name="template">rock.rockspec</param>
+    </service>
+    <service name="lua2pack_generate" mode="buildtime">
+        <param name="rockspec">glob://./luajinja-*.rockspec</param>
+        <param name="template">generic.spec</param>
+    </service>
+    <service name="tar" mode="buildtime"/>
+  
+    <service name="recompress" mode="buildtime">
+        <param name="file">*.tar</param>
+        <param name="compression">gz</param>
+    </service>
+</services>
