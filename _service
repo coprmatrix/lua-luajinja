@@ -15,9 +15,9 @@
     <service name="lua2pack_generate" mode="buildtime">
         <param name="rockspec">glob://./luajinja-*.rockspec</param>
         <param name="template">generic.spec</param>
+        <param name="luacode">noarch=true</param>
     </service>
-    <service name="tar" mode="buildtime"/>
-  
+    <service name="tar" mode="buildtime"/>  
     <service name="recompress" mode="buildtime">
         <param name="file">*.tar</param>
         <param name="compression">gz</param>
